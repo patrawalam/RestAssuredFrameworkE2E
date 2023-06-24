@@ -82,7 +82,7 @@ public class AirlineCreationTest extends AirlineAPIs{
 
     @Test
     public void createAirlineWithReusablePOSTMethodAndReusablePayloadCreationAsMap() throws IOException {
-        Map<String, Object> body = Payloads.getCreateAirlinePayloadAsMap("12211225","name","country",
+        Map<String, Object> body = Payloads.getCreateAirlinePayloadAsMap("12211227","name","country",
                 "logo","slogan", "head_quarters","website", "established");
         Response response = createAirlines(body);
         Assert.assertEquals(response.getStatusCode(), 200, "Mismatch in status codes");
