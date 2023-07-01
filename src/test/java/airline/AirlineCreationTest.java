@@ -1,12 +1,16 @@
 package airline;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import jsonUtils.JSONUtils;
+import net.datafaker.idnumbers.PeselNumber;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import payloads.Payloads;
+import pojos.airline.CreateAirlineRequest;
 import restUtils.RestUtils;
 
 import java.io.IOException;
@@ -80,11 +84,36 @@ public class AirlineCreationTest extends AirlineAPIs{
         Assert.assertEquals(response.getStatusCode(), 200, "Mismatch in status codes");
     }
 
-    @Test
+    //@Test
     public void createAirlineWithReusablePOSTMethodAndReusablePayloadCreationAsMap() throws IOException {
-        Map<String, Object> body = Payloads.getCreateAirlinePayloadAsMap("12211227","name","country",
-                "logo","slogan", "head_quarters","website", "established");
+        Map<String, Object> body = Payloads.getCreateAirlinePayloadAsMap();
         Response response = createAirlines(body);
         Assert.assertEquals(response.getStatusCode(), 200, "Mismatch in status codes");
+    }
+
+    //@Test
+    public void createAirlineWithReusablePOSTMethodAndReusablePayloadCreationFromPOJO() throws IOException {
+        //CreateAirlineRequest body = Payloads.getCreateAirlinePayloadFromPOJO();
+        //CreateAirlineRequest body = new CreateAirlineRequest();
+        /*CreateAirlineRequest body = new CreateAirlineRequest().toBuilder().name("Murtaza").build();
+        Response response = createAirlines(body);
+        Assert.assertEquals(response.getStatusCode(), 200, "Mismatch in status codes");*/
+
+        //CreateAirlineRequest payload = new CreateAirlineRequest().toBuilder().gender(PeselNumber.Gender.FEMALE).build();
+        //System.out.println(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(payload));
+    }
+
+    @Test
+    public void createAirlineWithReusablePOSTMethodAndReusablePayloadCreationFromPOJOAndCompareResponse() throws IOException {
+
+        CreateAirlineRequest createAirlineRequest = new CreateAirlineRequest();
+        Response response = createAirlines(createAirlineRequest);
+
+        //Extract Body from Response
+        ObjectMapper objectMapper = new ObjectMapper();
+        CreateAirlineRequest createAirlineResponse =
+                objectMapper.readValue(response.getBody().asString(), CreateAirlineRequest.class);
+
+        Assert.assertEquals(createAirlineResponse, createAirlineRequest);
     }
 }

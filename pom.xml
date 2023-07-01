@@ -9,19 +9,19 @@
     <version>1.0-SNAPSHOT</version>
 
     <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.2</version>
-                    <configuration>
-                        <suiteXmlFiles>
-                            <suiteXmlFile>testng.xml</suiteXmlFile>
-                        </suiteXmlFiles>
-                        <forkCount>0</forkCount>
-                    </configuration>
-                </plugin>
-            </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <forkCount>0</forkCount>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
@@ -67,11 +67,11 @@
             <version>5.0.9</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <!-- https://mvnrepository.com/artifact/net.datafaker/datafaker -->
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>1.9.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -88,7 +88,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
-
 
 
     </dependencies>

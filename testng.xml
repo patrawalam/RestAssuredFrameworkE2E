@@ -9,7 +9,7 @@
         <classes>
             <class name="airline.AirlineCreationTest">
                 <methods>
-                    <include name="createAirlineWithReusablePOSTMethodAndReusablePayloadCreationAsMap"/>
+                    <include name="createAirlineWithReusablePOSTMethodAndReusablePayloadCreationFromPOJOAndCompareResponse"/>
                 </methods>
             </class>
         </classes>

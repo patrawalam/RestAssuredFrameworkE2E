@@ -52,4 +52,12 @@ public class RestUtils {
         printResponseLogInReport(response);
         return response;
     }
+
+    public static Response doPost(String endpoint, Object requestPayload, Map<String, String> headers) {
+        RequestSpecification requestSpecification = getRequestSpecification(endpoint, requestPayload, headers);
+        printRequestLogInReport(requestSpecification);
+        Response response = requestSpecification.post();
+        printResponseLogInReport(response);
+        return response;
+    }
 }

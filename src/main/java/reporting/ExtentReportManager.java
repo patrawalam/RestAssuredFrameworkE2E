@@ -53,6 +53,10 @@ public class ExtentReportManager {
         ExtentReportListener.threadLocalExtentTest.get().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
     }
 
+    public static void logExceptionDetails(String exceptionDetails){
+        ExtentReportListener.threadLocalExtentTest.get().fail(exceptionDetails);
+    }
+
     public static void logJson(String json) {
         ExtentReportListener.threadLocalExtentTest.get().pass(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
